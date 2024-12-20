@@ -1,0 +1,30 @@
+name: umbrel
+services:
+  app:
+    image: dockurr/umbrel:latest
+    container_name: umbrelos-app
+    hostname: umbrelos
+    restart: always
+    pull_policy: always
+    tty: true
+    stdin_open: true
+    environment:
+      - TZ=${TZ:-America/New_York}
+    ports:
+      - 172.17.0.1:59081:80
+    volumes:
+      - /volume1/docker/umbrel:/data:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/80' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
+    networks:
+      - umbrel
+
+networks:
+  umbrel:
+    name: umbrel
+    external: false
