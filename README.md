@@ -45,7 +45,7 @@ See `docker-compose.yaml` for complete list of configurable options.
 
 ## 📂 Volumes
 
-- `./rootfs/data/umbrel` - Data storage
+- `./volumes/data/umbrel` - Data storage
 
 ## 🔍 Logging
 
