@@ -22,7 +22,7 @@ services:
     ports:
       - 172.17.0.1:59081:80
     volumes:
-      - './rootfs/data/umbrel:/data:rw'
+      - './volumes/data/umbrel:/data:rw'
       - '/var/run/docker.sock:/var/run/docker.sock'
     healthcheck:
       test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/80' || exit 1
